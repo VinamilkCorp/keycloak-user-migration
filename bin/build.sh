@@ -9,7 +9,7 @@ package() {
 copy() {
   ls ./target
   mkdir -p ./docker/assets
-  cp ./target/*.jar ./docker/assets/*jar
+  cp ./target/keycloak-rest-provider-1.0.1-SNAPSHOT.jar ./docker/assets/keycloak-rest-provider.jar
 }
 
 buildx() {
