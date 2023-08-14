@@ -7,9 +7,9 @@ package() {
 }
 
 copy() {
-  ls ./app/target
+  ls ./target
   mkdir -p ./docker/assets
-  cp ./app/target/*.jar ./docker/assets/*jar
+  cp ./target/*.jar ./docker/assets/*jar
 }
 
 buildx() {
