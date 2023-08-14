@@ -24,8 +24,8 @@ buildx() {
 }
 
 build() {
-    echo docker build --no-cache --force-rm --compress -t "${1}" -t "${2}" -f "${3}" "${4}"
-    docker build --no-cache --force-rm --compress -t "${1}" -t "${2}" -f "${3}" "${4}"
+    echo docker build --no-cache --force-rm --build-arg KEYCLOAK_IMAGE="${5}" --compress -t "${1}" -t "${2}" -f "${3}" "${4} "
+    docker build --no-cache --force-rm --build-arg KEYCLOAK_IMAGE="${5}" --compress -t "${1}" -t "${2}" -f "${3}" "${4}"
 }
 
 echo Tag         : "${IMAGE}:latest"
@@ -39,4 +39,4 @@ echo "Copying target file "
 copy
 
 echo "Build the actual image"
-build "${IMAGE}:latest" "${IMAGE}:${CE_TAG}" "${DOCKERFILE}" "docker"
+build "${IMAGE}:latest" "${IMAGE}:${CE_TAG}" "${DOCKERFILE}" "docker" "${KEYCLOAK_IMAGE}"
