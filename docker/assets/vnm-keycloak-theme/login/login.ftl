@@ -75,7 +75,7 @@
                                 </div>
                                 <div id="kc-form-buttons" class="vnm-mt-4 ${properties.kcFormGroupClass!}">
                                     <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
-                                    <input tabindex="4" class="rs-btn rs-btn-primary rs-btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                                    <input tabindex="4" class="vnm-mt-4 rs-btn rs-btn-ghost rs-btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
                                 </div>
                             </form>
                         </#if>
@@ -91,24 +91,24 @@
                 </#if>
                 <#if realm.password && social.providers??>
                     <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                        <hr/>
-                        <h4>${msg("identity-provider-login-label")}</h4>
-
-                        <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
-                            <#list social.providers as p>
-                                <li>
-                                    <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
-                                            type="button" href="${p.loginUrl}">
-                                        <#if p.iconClasses?has_content>
-                                            <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
-                                            <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">${p.displayName!}</span>
-                                        <#else>
-                                            <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
-                                        </#if>
-                                    </a>
-                                </li>
-                            </#list>
-                        </ul>
+                        <div class="vnm-text-center">
+                            <div class="vnm-text-sm">${msg("identity-provider-login-label")}</div>
+                            <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                                <#list social.providers as p>
+                                    <li>
+                                        <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                                type="button" href="${p.loginUrl}">
+                                            <#if p.iconClasses?has_content>
+                                                <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
+                                                <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">${p.displayName!}</span>
+                                            <#else>
+                                                <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
+                                            </#if>
+                                        </a>
+                                    </li>
+                                </#list>
+                            </ul>
+                        </div>
                     </div>
                 </#if>
         </div>

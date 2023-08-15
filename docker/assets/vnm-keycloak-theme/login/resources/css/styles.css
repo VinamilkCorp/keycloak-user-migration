@@ -3300,3 +3300,11 @@ svg {
 #kc-header-wrapper {
   display: none;
 }
+
+.rs-btn-ghost {
+  background-color: transparent;
+  border: 1px solid #1675e0;
+  border: 1px solid var(--rs-btn-ghost-border);
+  color: #1675e0;
+  color: var(--rs-btn-ghost-text);
+}
