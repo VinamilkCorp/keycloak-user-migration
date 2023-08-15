@@ -1,6 +1,5 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
-   <#if section = "form">
    <div class="vnm-flex vnm-h-screen">
     <div class="vnm-hidden lg:vnm-block lg:vnm-w-2/3 vnm-h-screen vnm-relative"
         style="background: repeating-linear-gradient(-45deg, rgb(2, 19, 175), rgb(2, 19, 175) 10%, rgb(52, 89, 255) 10%, rgb(52, 89, 255) 20%);"
@@ -79,45 +78,40 @@
                                 </div>
                             </form>
                         </#if>
-                        <#elseif section = "info" >
-                            <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
-                                <div id="kc-registration-container">
-                                    <div id="kc-registration">
-                                        <span>${msg("noAccount")} <a tabindex="6"
-                                                                    href="${url.registrationUrl}">${msg("doRegister")}</a></span>
-                                    </div>
-                                </div>
-                            </#if>
-                        <#elseif section = "socialProviders" >
-                            <#if realm.password && social.providers??>
-                                <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                                    <hr/>
-                                    <h4>${msg("identity-provider-login-label")}</h4>
-
-                                    <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
-                                        <#list social.providers as p>
-                                            <li>
-                                                <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
-                                                        type="button" href="${p.loginUrl}">
-                                                    <#if p.iconClasses?has_content>
-                                                        <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
-                                                        <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">${p.displayName!}</span>
-                                                    <#else>
-                                                        <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
-                                                    </#if>
-                                                </a>
-                                            </li>
-                                        </#list>
-                                    </ul>
-                                </div>
-                            </#if>
-                        </#if>
                     </div>
                 </div>
+                 <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+                    <div id="kc-registration-container">
+                        <div id="kc-registration">
+                            <span>${msg("noAccount")} <a tabindex="6"
+                                                        href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                        </div>
+                    </div>
+                </#if>
+                <#if realm.password && social.providers??>
+                    <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
+                        <hr/>
+                        <h4>${msg("identity-provider-login-label")}</h4>
+
+                        <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                            <#list social.providers as p>
+                                <li>
+                                    <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                            type="button" href="${p.loginUrl}">
+                                        <#if p.iconClasses?has_content>
+                                            <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
+                                            <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">${p.displayName!}</span>
+                                        <#else>
+                                            <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
+                                        </#if>
+                                    </a>
+                                </li>
+                            </#list>
+                        </ul>
+                    </div>
+                </#if>
         </div>
     </div>
       <div class="vnm-bg-neutral-100 vnm-p-4 vnm-text-center vnm-text-xs">© Copyright 2023 by Vinamilk.</div>
     </div>
-
-
 </@layout.registrationLayout>
