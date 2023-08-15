@@ -75,7 +75,7 @@
                                 </div>
                                 <div id="kc-form-buttons" class="vnm-mt-4 ${properties.kcFormGroupClass!}">
                                     <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
-                                    <input tabindex="4" class="vnm-mt-4 rs-btn rs-btn-ghost rs-btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                                    <input tabindex="4" class="rs-btn rs-btn-primary rs-btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
                                 </div>
                             </form>
                         </#if>
@@ -96,7 +96,7 @@
                             <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
                                 <#list social.providers as p>
                                     <li>
-                                        <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                        <a id="social-${p.alias}" class="rs-btn rs-btn-ghost rs-btn-block vnm-mt-4  ${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
                                                 type="button" href="${p.loginUrl}">
                                             <#if p.iconClasses?has_content>
                                                 <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
