@@ -81,41 +81,42 @@
                         </#if>
                     </div>
                 </div>
+                 <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+                    <div id="kc-registration-container">
+                        <div id="kc-registration">
+                            <span>${msg("noAccount")} <a tabindex="6"
+                                                        href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                        </div>
+                    </div>
+                </#if>
                 <#if realm.password && social.providers??>
-            <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
-                <hr/>
-                <h4>${msg("identity-provider-login-label")}</h4>
+                    <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
+                        <hr/>
+                        <h4>${msg("identity-provider-login-label")}</h4>
 
-                <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
-                    <#list social.providers as p>
-                        <li>
-                            <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
-                                    type="button" href="${p.loginUrl}">
-                                <#if p.iconClasses?has_content>
-                                    <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
-                                    <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">${p.displayName!}</span>
-                                <#else>
-                                    <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
-                                </#if>
-                            </a>
-                        </li>
-                    </#list>
-                </ul>
-            </div>
-        </#if>
+                        <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
+                            <#list social.providers as p>
+                                <li>
+                                    <a id="social-${p.alias}" class="${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                            type="button" href="${p.loginUrl}">
+                                        <#if p.iconClasses?has_content>
+                                            <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
+                                            <span class="${properties.kcFormSocialAccountNameClass!} kc-social-icon-text">${p.displayName!}</span>
+                                        <#else>
+                                            <span class="${properties.kcFormSocialAccountNameClass!}">${p.displayName!}</span>
+                                        </#if>
+                                    </a>
+                                </li>
+                            </#list>
+                        </ul>
+                    </div>
+                </#if>
         </div>
     </div>
       <div class="vnm-bg-neutral-100 vnm-p-4 vnm-text-center vnm-text-xs">© Copyright 2023 by Vinamilk.</div>
     </div>
     <#elseif section = "info" >
-        <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
-            <div id="kc-registration-container">
-                <div id="kc-registration">
-                    <span>${msg("noAccount")} <a tabindex="6"
-                                                 href="${url.registrationUrl}">${msg("doRegister")}</a></span>
-                </div>
-            </div>
-        </#if>
+
     <#elseif section = "socialProviders" >
 
     </#if>
