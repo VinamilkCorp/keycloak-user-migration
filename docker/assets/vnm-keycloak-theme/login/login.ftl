@@ -115,6 +115,5 @@
                 </ul>
             </div>
         </#if>
-    </#if>
 
 </@layout.registrationLayout>
