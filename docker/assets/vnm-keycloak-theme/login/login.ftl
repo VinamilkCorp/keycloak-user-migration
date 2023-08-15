@@ -115,10 +115,6 @@
     </div>
       <div class="vnm-bg-neutral-100 vnm-p-4 vnm-text-center vnm-text-xs">© Copyright 2023 by Vinamilk.</div>
     </div>
-    <#elseif section = "info" >
-
-    <#elseif section = "socialProviders" >
-
     </#if>
 
 </@layout.registrationLayout>
