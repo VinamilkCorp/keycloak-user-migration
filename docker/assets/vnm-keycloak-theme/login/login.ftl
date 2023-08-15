@@ -81,21 +81,7 @@
                         </#if>
                     </div>
                 </div>
-        </div>
-    </div>
-      <div class="vnm-bg-neutral-100 vnm-p-4 vnm-text-center vnm-text-xs">© Copyright 2023 by Vinamilk.</div>
-    </div>
-    <#elseif section = "info" >
-        <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
-            <div id="kc-registration-container">
-                <div id="kc-registration">
-                    <span>${msg("noAccount")} <a tabindex="6"
-                                                 href="${url.registrationUrl}">${msg("doRegister")}</a></span>
-                </div>
-            </div>
-        </#if>
-    <#elseif section = "socialProviders" >
-        <#if realm.password && social.providers??>
+                <#if realm.password && social.providers??>
             <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
                 <hr/>
                 <h4>${msg("identity-provider-login-label")}</h4>
@@ -117,6 +103,21 @@
                 </ul>
             </div>
         </#if>
+        </div>
+    </div>
+      <div class="vnm-bg-neutral-100 vnm-p-4 vnm-text-center vnm-text-xs">© Copyright 2023 by Vinamilk.</div>
+    </div>
+    <#elseif section = "info" >
+        <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+            <div id="kc-registration-container">
+                <div id="kc-registration">
+                    <span>${msg("noAccount")} <a tabindex="6"
+                                                 href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                </div>
+            </div>
+        </#if>
+    <#elseif section = "socialProviders" >
+
     </#if>
 
 </@layout.registrationLayout>
