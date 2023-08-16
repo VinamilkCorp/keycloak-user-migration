@@ -3308,3 +3308,17 @@ svg {
   color: #1675e0;
   color: var(--rs-btn-ghost-text);
 }
+
+.alert-error {
+  position: absolute;
+  z-index: 10;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #e00b0b;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%);
+  font-size: 15px;
+  color: #e00b0b;
+}
