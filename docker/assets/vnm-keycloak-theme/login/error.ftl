@@ -13,7 +13,7 @@
                 <div class="vnm-w-full vnm-bg-white lg:vnm-w-1/3 vnm-flex vnm-flex-col">
                     <div class="lg:vnm-w-3/4 vnm-bg-white vnm-mx-auto vnm-my-10 vnm-flex vnm-flex-1 vnm-flex-col vnm-justify-center vnm-items-start">
                         <div class="vnm-mb-5">
-                            <div class="vnm-text-2xl vnm-text-main vnm-font-extrabold vnm-uppercase">
+                            <div class="vnm-text-xl vnm-text-main vnm-font-extrabold vnm-uppercase">
                                 ${kcSanitize(msg("errorTitle"))?no_esc}
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                 <#if skipLink??>
                 <#else>
                     <#if client?? && client.baseUrl?has_content>
-                        <p><a id="backToApplication" href="${client.baseUrl}">${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
+                        <p><a class="vnm-text-main vnm-underline" id="backToApplication" href="${client.baseUrl}">${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
                     </#if>
                 </#if>
             </div>
