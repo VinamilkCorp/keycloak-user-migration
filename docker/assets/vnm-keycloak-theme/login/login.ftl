@@ -96,7 +96,7 @@
                             <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
                                 <#list social.providers as p>
                                     <li>
-                                        <a id="social-${p.alias}" class="rs-btn rs-btn-ghost rs-btn-block vnm-mt-4  ${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
+                                        <a id="social-${p.alias}" class="rs-btn rs-btn-ghost rs-btn-block vnm-mt-4 vnm-font-bold ${properties.kcFormSocialAccountListButtonClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountGridItem!}</#if>"
                                                 type="button" href="${p.loginUrl}">
                                             <#if p.iconClasses?has_content>
                                                 <i class="${properties.kcCommonLogoIdP!} ${p.iconClasses!}" aria-hidden="true"></i>
