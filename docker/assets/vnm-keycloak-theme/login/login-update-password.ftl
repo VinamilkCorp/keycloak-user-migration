@@ -12,10 +12,15 @@
             </div>
             <div class="vnm-w-full vnm-bg-white lg:vnm-w-1/3 vnm-flex vnm-flex-col">
                 <div class="lg:vnm-w-3/4 vnm-bg-white vnm-mx-auto vnm-my-10 vnm-flex vnm-flex-1 vnm-flex-col vnm-justify-center vnm-items-start">
+                    <div class="vnm-mb-5">
+                        <div class="vnm-text-3xl vnm-text-main vnm-font-extrabold vnm-uppercase">
+                            ${msg("updatePasswordTitle")}
+                        </div>
+                    </div>
 
                 </div>
+                <div class="vnm-bg-neutral-100 vnm-p-4 vnm-text-center vnm-text-xs">© Copyright 2023 by Vinamilk.</div>
             </div>
-            <div class="vnm-bg-neutral-100 vnm-p-4 vnm-text-center vnm-text-xs">© Copyright 2023 by Vinamilk.</div>
         </div>
     </#if>
 </@layout.registrationLayout>
