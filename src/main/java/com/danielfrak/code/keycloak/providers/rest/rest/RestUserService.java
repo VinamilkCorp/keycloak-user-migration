@@ -75,7 +75,6 @@ public class RestUserService implements LegacyUserService {
         var getUsernameUri = String.format("%s/%s", this.uri, usernameOrEmail);
         try {
             var response = this.httpClient.get(getUsernameUri);
-            LOGGER.info("Find user " + usernameOrEmail + " => " + response.getBody());
             if (response.getCode() != HttpStatus.SC_OK) {
                 return Optional.empty();
             }
