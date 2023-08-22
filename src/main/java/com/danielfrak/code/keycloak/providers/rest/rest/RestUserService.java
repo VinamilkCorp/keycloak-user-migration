@@ -1,13 +1,15 @@
 package com.danielfrak.code.keycloak.providers.rest.rest;
 
+import com.danielfrak.code.keycloak.providers.rest.exceptions.RestUserProviderException;
 import com.danielfrak.code.keycloak.providers.rest.remote.LegacyUser;
 import com.danielfrak.code.keycloak.providers.rest.remote.LegacyUserService;
-import com.danielfrak.code.keycloak.providers.rest.exceptions.RestUserProviderException;
 import com.danielfrak.code.keycloak.providers.rest.rest.http.HttpClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpStatus;
 import org.keycloak.common.util.Encode;
 import org.keycloak.component.ComponentModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -16,6 +18,9 @@ import java.util.Optional;
 import static com.danielfrak.code.keycloak.providers.rest.ConfigurationProperties.*;
 
 public class RestUserService implements LegacyUserService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RestUserService.class);
+
 
     private final String uri;
     private final HttpClient httpClient;
@@ -75,6 +80,7 @@ public class RestUserService implements LegacyUserService {
         var getUsernameUri = String.format("%s/%s", this.uri, usernameOrEmail);
         try {
             var response = this.httpClient.get(getUsernameUri);
+            LOGGER.info("Find user " + usernameOrEmail + " => " + response.getBody());
             if (response.getCode() != HttpStatus.SC_OK) {
                 return Optional.empty();
             }
@@ -95,6 +101,7 @@ public class RestUserService implements LegacyUserService {
         try {
             var json = objectMapper.writeValueAsString(dto);
             var response = httpClient.post(passwordValidationUri, json);
+            LOGGER.info("Login user " + username + " => " + response.getBody());
             return response.getCode() == HttpStatus.SC_OK;
         } catch (IOException e) {
             throw new RestUserProviderException(e);
