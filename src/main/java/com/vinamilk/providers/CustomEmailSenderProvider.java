@@ -16,7 +16,7 @@ import org.keycloak.models.UserModel;
 
 public class CustomEmailSenderProvider implements EmailSenderProvider {
 
-  private final String integrationUrl = System.getProperty("INTEGRATION_URL");
+  private final String integrationUrl = "http://integration-service:8084";
   private final HttpClient httpClient;
 
   private static final Logger log = Logger.getLogger("CustomEmailSenderProvider");
