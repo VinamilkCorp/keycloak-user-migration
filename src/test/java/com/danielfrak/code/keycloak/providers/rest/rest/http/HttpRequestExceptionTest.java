@@ -1,5 +1,6 @@
 package com.danielfrak.code.keycloak.providers.rest.rest.http;
 
+import com.vinamilk.http.HttpRequestException;
 import org.apache.http.client.methods.HttpGet;
 import org.junit.jupiter.api.Test;
 

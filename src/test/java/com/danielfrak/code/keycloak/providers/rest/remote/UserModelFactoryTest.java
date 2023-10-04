@@ -1,5 +1,7 @@
 package com.danielfrak.code.keycloak.providers.rest.remote;
 
+import com.vinamilk.dto.LegacyUser;
+import com.vinamilk.services.UserModelFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +18,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.danielfrak.code.keycloak.providers.rest.ConfigurationProperties.*;
+import static com.vinamilk.configs.ConfigurationProperties.GROUP_MAP_PROPERTY;
+import static com.vinamilk.configs.ConfigurationProperties.MIGRATE_UNMAPPED_GROUPS_PROPERTY;
+import static com.vinamilk.configs.ConfigurationProperties.MIGRATE_UNMAPPED_ROLES_PROPERTY;
+import static com.vinamilk.configs.ConfigurationProperties.ROLE_MAP_PROPERTY;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;

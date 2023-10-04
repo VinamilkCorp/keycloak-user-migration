@@ -1,6 +1,14 @@
 package com.danielfrak.code.keycloak.providers.rest.rest.http;
 
-import com.danielfrak.code.keycloak.providers.rest.exceptions.RestUserProviderException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.vinamilk.dto.SendEmailDto;
+import com.vinamilk.exceptions.RestUserProviderException;
+import com.vinamilk.http.HttpClient;
+import com.vinamilk.http.HttpRequestException;
+import com.vinamilk.http.HttpResponse;
+import java.util.List;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
@@ -85,7 +93,7 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertNull(response.body);
+        assertNull(response.getBody());
         assertEquals(HttpGet.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -118,7 +126,7 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpGet.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -143,7 +151,7 @@ class HttpClientTest {
         HttpResponse response = httpClient.get(uri);
 
         RecordedRequest recordedRequest = Objects.requireNonNull(mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpGet.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -167,7 +175,7 @@ class HttpClientTest {
         HttpResponse response = httpClient.get(uri);
 
         RecordedRequest recordedRequest = Objects.requireNonNull(mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpGet.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -183,7 +191,7 @@ class HttpClientTest {
         HttpResponse response = httpClient.get(uri);
 
         RecordedRequest recordedRequest = Objects.requireNonNull(mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpGet.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -202,7 +210,7 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpGet.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -228,7 +236,7 @@ class HttpClientTest {
         assertEquals(redirectedUri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
         assertNull(recordedRequest.getHeader(HttpHeaders.AUTHORIZATION));
 
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpStatus.SC_OK, response.getCode());
     }
 
@@ -245,7 +253,7 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpGet.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -285,11 +293,28 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpPost.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
     }
+
+//    @Test
+//    void postShouldSendEmailAPostRequest() throws InterruptedException, JsonProcessingException {
+//        var expectedBody = true;
+//
+//        SendEmailDto sendEmailDto = new SendEmailDto();
+//        sendEmailDto.setTo(List.of("levietdatqn@gmail.com"));
+//        sendEmailDto.setSubject("subject");
+//        sendEmailDto.setBody("textBody");
+//
+//        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+//        String json = ow.writeValueAsString(sendEmailDto);
+//
+//        HttpResponse response = httpClient.post("http://localhost:8070/api/v1/email/send", json);
+//
+//        assertEquals("true", response.getBody());
+//    }
 
     @Test
     void postShouldHandleRedirectsWhenLaxRedirectStrategyIsUsed() throws InterruptedException {
@@ -310,7 +335,7 @@ class HttpClientTest {
         assertEquals(redirectedUri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
         assertNull(recordedRequest.getHeader(HttpHeaders.AUTHORIZATION));
 
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpStatus.SC_OK, response.getCode());
     }
 
@@ -327,7 +352,7 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpPost.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -341,7 +366,7 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertNull(response.body);
+        assertNull(response.getBody());
         assertEquals(HttpPost.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -361,7 +386,7 @@ class HttpClientTest {
                 .getBytes(StandardCharsets.ISO_8859_1)));
         RecordedRequest recordedRequest = Objects.requireNonNull(mockWebServer.takeRequest(5, TimeUnit.SECONDS));
         var authorizationHeader = recordedRequest.getHeaders().get(HttpHeaders.AUTHORIZATION);
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpPost.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
@@ -381,7 +406,7 @@ class HttpClientTest {
 
         RecordedRequest recordedRequest = Objects.requireNonNull(
                 mockWebServer.takeRequest(5, TimeUnit.SECONDS));
-        assertEquals(expectedBody, response.body);
+        assertEquals(expectedBody, response.getBody());
         assertEquals(HttpPost.METHOD_NAME, recordedRequest.getMethod());
         assertEquals("/", recordedRequest.getPath());
         assertEquals(uri, Objects.requireNonNull(recordedRequest.getRequestUrl()).toString());
