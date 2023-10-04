@@ -48,9 +48,6 @@ public class LegacyProvider implements UserStorageProvider,
 
 
     private UserModel getUserModel(RealmModel realm, String username, Supplier<Optional<LegacyUser>> user) {
-        LOG.info("Realm " + realm.getName());
-        LOG.info("username "+ username);
-
         return user.get()
                 .filter(u -> {
                     // Make sure we're not trying to migrate users if they have changed their username
@@ -69,24 +66,17 @@ public class LegacyProvider implements UserStorageProvider,
 
     @Override
     public boolean isValid(RealmModel realmModel, UserModel userModel, CredentialInput input) {
+        LOG.info("realmModel " + realmModel);
+        LOG.info("email " + String.valueOf(input));
         if (!supportsCredentialType(input.getType())) {
             return false;
         }
 
         var userIdentifier = getUserIdentifier(userModel);
 
-        LOG.info("===============");
-        LOG.info(String.valueOf(userIdentifier));
-        LOG.info(String.valueOf(input.getChallengeResponse()));
-        LOG.info("===============");
-
         if (!legacyUserService.isPasswordValid(userIdentifier, input.getChallengeResponse())) {
             return false;
         }
-
-        LOG.info("===============");
-        LOG.info(String.valueOf(input));
-        LOG.info("===============");
 
         if (passwordDoesNotBreakPolicy(realmModel, userModel, input.getChallengeResponse())) {
             userModel.credentialManager().updateCredential(input);
@@ -148,7 +138,6 @@ public class LegacyProvider implements UserStorageProvider,
     }
 
     private void severFederationLink(UserModel user) {
-        LOG.info("Severing federation link for " + user.getUsername());
         String link = user.getFederationLink();
         if (link != null && !link.isBlank()) {
             user.setFederationLink(null);
@@ -172,11 +161,15 @@ public class LegacyProvider implements UserStorageProvider,
 
     @Override
     public UserModel getUserByUsername(RealmModel realmModel, String username) {
+        LOG.info("realmModel " + realmModel);
+        LOG.info("email " + username);
         return getUserModel(realmModel, username, () -> legacyUserService.findByUsername(username));
     }
 
     @Override
     public UserModel getUserByEmail(RealmModel realmModel, String email) {
+        LOG.info("realmModel " + realmModel);
+        LOG.info("email " + email);
         return getUserModel(realmModel, email, () -> legacyUserService.findByEmail(email));
     }
 }
