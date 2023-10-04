@@ -19,3 +19,9 @@ USER 1000
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "build", "--spi-email-sender-provider=customSendEmail", "--spi-email-sender-default-enabled=false"]
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--spi-email-sender-provider=customSendEmail", "--spi-email-sender-default-enabled=false"]
+
+ENV KC_DB=postgres
+ENV KC_DB_URL=jdbc:postgresql://192.168.232.50:5432/keycloak
+ENV KC_DB_USERNAME=postgres
+ENV KC_DB_PASSWORD=vnm88
+ENV KC_HOSTNAME=localhost

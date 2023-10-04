@@ -30,7 +30,7 @@ export CE_VERSION:=$(shell ./bin/version.sh)
 export CE_TAG:=$(CE_VERSION)
 export IMAGE_NAME:=keycloak
 export IMAGE:=$(MAINTAINER)/$(IMAGE_NAME)
-export KEYCLOAK_IMAGE:=keycloak/keycloak:21.0
+export KEYCLOAK_IMAGE:=bitnami/keycloak:21.1.1
 
 info: prepare
 	@echo "---"
