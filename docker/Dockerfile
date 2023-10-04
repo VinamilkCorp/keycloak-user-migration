@@ -1,12 +1,6 @@
 ARG KEYCLOAK_IMAGE
 ARG MAVEN_IMAGE
 
-FROM maven:3.9.2-eclipse-temurin-17 as builder
-COPY pom.xml /tmp/
-COPY src /tmp/src
-WORKDIR /tmp/
-RUN mvn clean package
-
 FROM keycloak/keycloak:21.0
 USER root
 COPY --from=builder /tmp/target/*.jar /opt/keycloak/providers/app.jar
