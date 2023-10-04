@@ -16,7 +16,7 @@ import org.keycloak.models.UserModel;
 
 public class CustomEmailSenderProvider implements EmailSenderProvider {
 
-  private final String integrationUrl = "http://host.docker.internal:8070";
+  private final String integrationUrl = System.getProperty("INTEGRATION_URL");
   private final HttpClient httpClient;
 
   private static final Logger log = Logger.getLogger("CustomEmailSenderProvider");
@@ -28,6 +28,7 @@ public class CustomEmailSenderProvider implements EmailSenderProvider {
   @Override
   public void send(Map<String, String> config, UserModel user, String subject, String textBody,
       String htmlBody) {
+    log.info("integrationUrl " + integrationUrl);
     log.info("attempting to send email for " + user.getEmail());
     log.info("attempting to send email body " + textBody);
     log.info("attempting to send email subject " + subject);
