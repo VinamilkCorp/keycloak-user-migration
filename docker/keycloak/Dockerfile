@@ -11,8 +11,6 @@ FROM keycloak/keycloak:21.0
 USER root
 COPY --from=builder /tmp/target/*.jar /opt/keycloak/providers/app.jar
 
-COPY --from=builder /tmp/src/authen.jar /opt/keycloak/providers/authen.jar
-
 COPY docker/assets/vnm-keycloak-theme  /opt/keycloak/themes/vnm-keycloak-theme
 
 
