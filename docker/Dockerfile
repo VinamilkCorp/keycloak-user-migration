@@ -8,4 +8,4 @@ USER 1000
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "build", "--spi-email-sender-provider=customSendEmail", "--spi-email-sender-default-enabled=false"]
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--optimized", "--spi-email-sender-provider=customSendEmail", "--spi-email-sender-default-enabled=false"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--spi-email-sender-provider=customSendEmail", "--spi-email-sender-default-enabled=false"]
