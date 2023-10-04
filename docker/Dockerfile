@@ -3,9 +3,9 @@ ARG MAVEN_IMAGE
 
 FROM keycloak/keycloak:21.0
 USER root
-COPY --from=builder /tmp/target/*.jar /opt/keycloak/providers/app.jar
+COPY assets/keycloak-rest-provider.jar /opt/keycloak/providers/keycloak-rest-provider.jar
 
-COPY docker/assets/vnm-keycloak-theme  /opt/keycloak/themes/vnm-keycloak-theme
+COPY assets/vnm-keycloak-theme  /opt/keycloak/themes/vnm-keycloak-theme
 
 
 USER 1001
