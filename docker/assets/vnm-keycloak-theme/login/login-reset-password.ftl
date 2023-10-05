@@ -26,7 +26,7 @@
                                             <input placeholder="<#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if>" type="text" id="username" name="username" class="rs-input ${properties.kcInputClass!}" autofocus value="${(auth.attemptedUsername!'')}" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
                                         </div>
                                         <#if messagesPerField.existsError('username')>
-                                            <span id="input-error-username" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
+                                            <span id="input-error-username" class="vnm-text-red-500 dark:vnm-text-red-400 vnm-pt-0.5 vnm-text-xs ${properties.kcInputErrorMessageClass!}" aria-live="polite">
                                                         ${kcSanitize(messagesPerField.get('username'))?no_esc}
                                             </span>
                                         </#if>
@@ -34,16 +34,22 @@
                                 </div>
                             </div>
                             <div class="${properties.kcFormGroupClass!} ${properties.kcFormSettingClass!}">
-                                <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
-                                    <div class="${properties.kcFormOptionsWrapperClass!}">
-                                        <span><a href="${url.loginUrl}">${kcSanitize(msg("backToLogin"))?no_esc}</a></span>
-                                    </div>
-                                </div>
-
                                 <div id="kc-form-buttons" class="vnm-mt-4 ${properties.kcFormButtonsClass!}">
                                     <input class="rs-btn rs-btn-primary rs-btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
                                 </div>
+                                 <div id="kc-form-options" class="vnm-mt-4 ${properties.kcFormOptionsClass!}">
+                                    <div class="rs-btn rs-btn-default rs-btn-block ${properties.kcFormOptionsWrapperClass!}">
+                                        <span><a href="${url.loginUrl}">${kcSanitize(msg("backToLogin"))?no_esc}</a></span>
+                                    </div>
+                                </div>
                             </div>
+                            <p id="instruction1" class="instruction">
+                                <#if realm.duplicateEmailsAllowed>
+                                    ${msg("emailInstructionUsername")}
+                                <#else>
+                                    ${msg("emailInstruction")}
+                                </#if>
+                            </p>
                         </form>
                     </div>
                 </div>
