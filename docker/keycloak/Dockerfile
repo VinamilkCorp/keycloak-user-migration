@@ -25,3 +25,4 @@ ENV KC_DB_URL=jdbc:postgresql://192.168.232.50:5432/keycloak
 ENV KC_DB_USERNAME=postgres
 ENV KC_DB_PASSWORD=vnm88
 ENV KC_HOSTNAME=localhost
+ENV INTEGRATION_URL=http://host.docker.internal:8070
