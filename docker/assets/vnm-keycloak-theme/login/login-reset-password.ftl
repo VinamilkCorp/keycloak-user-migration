@@ -37,7 +37,7 @@
                                 <div id="kc-form-buttons" class="vnm-mt-4 ${properties.kcFormButtonsClass!}">
                                     <input class="rs-btn rs-btn-primary rs-btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
                                 </div>
-                                 <div id="kc-form-options" class="vnm-mt-4 ${properties.kcFormOptionsClass!}">
+                                 <div id="kc-form-options" class="vnm-mt-2 ${properties.kcFormOptionsClass!}">
                                     <div class="rs-btn rs-btn-default rs-btn-block ${properties.kcFormOptionsWrapperClass!}">
                                         <span><a href="${url.loginUrl}">${kcSanitize(msg("backToLogin"))?no_esc}</a></span>
                                     </div>
