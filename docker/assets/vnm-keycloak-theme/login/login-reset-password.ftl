@@ -14,22 +14,23 @@
                 <div class="lg:vnm-w-3/4 vnm-bg-white vnm-mx-auto vnm-my-10 vnm-flex vnm-flex-1 vnm-flex-col vnm-justify-center vnm-items-start">
                     <div class="vnm-mb-5">
                         <div class="vnm-text-2xl vnm-text-main vnm-font-extrabold vnm-uppercase">
-                             ${msg("pageExpiredTitle")}
+                             ${msg("emailForgotTitle")}
                         </div>
                     </div>
                     <div class="vnm-flex vnm-w-full vnm-flex-col vnm-gap-4">
                         <form id="kc-reset-password-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
-                            <div class="${properties.kcFormGroupClass!}">
-                                <div class="${properties.kcLabelWrapperClass!}">
-                                    <label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
-                                </div>
-                                <div class="${properties.kcInputWrapperClass!}">
-                                    <input type="text" id="username" name="username" class="${properties.kcInputClass!}" autofocus value="${(auth.attemptedUsername!'')}" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
-                                    <#if messagesPerField.existsError('username')>
-                                        <span id="input-error-username" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                                                    ${kcSanitize(messagesPerField.get('username'))?no_esc}
-                                        </span>
-                                    </#if>
+                            <div class="vnm-col-span-12 vnm-mt-4">
+                                <div class="${properties.kcFormGroupClass!}">
+                                    <div class="${properties.kcInputWrapperClass!}">
+                                        <div class="rs-input-group rs-input-group-inside">
+                                            <input placeholder="<#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if>" type="text" id="username" name="username" class="rs-input ${properties.kcInputClass!}" autofocus value="${(auth.attemptedUsername!'')}" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
+                                        </div>
+                                        <#if messagesPerField.existsError('username')>
+                                            <span id="input-error-username" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
+                                                        ${kcSanitize(messagesPerField.get('username'))?no_esc}
+                                            </span>
+                                        </#if>
+                                    </div>
                                 </div>
                             </div>
                             <div class="${properties.kcFormGroupClass!} ${properties.kcFormSettingClass!}">
@@ -39,8 +40,8 @@
                                     </div>
                                 </div>
 
-                                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                                    <input class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
+                                <div id="kc-form-buttons" class="vnm-mt-4 ${properties.kcFormButtonsClass!}">
+                                    <input class="rs-btn rs-btn-primary rs-btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
                                 </div>
                             </div>
                         </form>
