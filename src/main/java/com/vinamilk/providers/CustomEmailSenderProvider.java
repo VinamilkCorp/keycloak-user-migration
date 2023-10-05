@@ -36,7 +36,7 @@ public class CustomEmailSenderProvider implements EmailSenderProvider {
     SendEmailDto sendEmailDto = new SendEmailDto();
     sendEmailDto.setTo(List.of(user.getEmail()));
     sendEmailDto.setSubject(subject);
-    sendEmailDto.setBody(textBody);
+    sendEmailDto.setBody(htmlBody);
     ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
     String json = null;
     try {
