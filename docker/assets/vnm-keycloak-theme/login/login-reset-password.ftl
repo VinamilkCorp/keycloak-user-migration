@@ -43,13 +43,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <p id="instruction1" class="instruction">
+                            <div id="instruction1" class="instruction vnm-mt-4 vnm-text-sm">
                                 <#if realm.duplicateEmailsAllowed>
                                     ${msg("emailInstructionUsername")}
                                 <#else>
                                     ${msg("emailInstruction")}
                                 </#if>
-                            </p>
+                            </div>
                         </form>
                     </div>
                 </div>
