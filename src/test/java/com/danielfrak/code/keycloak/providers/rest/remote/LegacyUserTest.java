@@ -1,5 +1,6 @@
 package com.danielfrak.code.keycloak.providers.rest.remote;
 
+import com.vinamilk.dto.LegacyUser;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 

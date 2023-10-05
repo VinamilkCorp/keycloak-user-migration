@@ -28,7 +28,7 @@ endif
 
 export CE_VERSION:=$(shell ./bin/version.sh)
 export CE_TAG:=$(CE_VERSION)
-export IMAGE_NAME:=vnmidp
+export IMAGE_NAME:=keycloak
 export IMAGE:=$(MAINTAINER)/$(IMAGE_NAME)
 export KEYCLOAK_IMAGE:=bitnami/keycloak:21.1.1
 

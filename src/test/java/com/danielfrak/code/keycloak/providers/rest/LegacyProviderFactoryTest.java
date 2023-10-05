@@ -1,5 +1,7 @@
 package com.danielfrak.code.keycloak.providers.rest;
 
+import com.vinamilk.configs.ConfigurationProperties;
+import com.vinamilk.providers.LegacyProviderFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,8 +11,8 @@ import org.keycloak.models.KeycloakSession;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.danielfrak.code.keycloak.providers.rest.ConfigurationProperties.PROVIDER_NAME;
-import static com.danielfrak.code.keycloak.providers.rest.ConfigurationProperties.URI_PROPERTY;
+import static com.vinamilk.configs.ConfigurationProperties.PROVIDER_NAME;
+import static com.vinamilk.configs.ConfigurationProperties.URI_PROPERTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;

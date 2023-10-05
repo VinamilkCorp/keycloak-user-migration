@@ -1,5 +1,6 @@
 package com.danielfrak.code.keycloak.providers.rest.rest.http;
 
+import com.vinamilk.http.HttpResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

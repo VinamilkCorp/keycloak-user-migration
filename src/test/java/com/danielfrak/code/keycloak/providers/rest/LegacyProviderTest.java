@@ -1,8 +1,9 @@
 package com.danielfrak.code.keycloak.providers.rest;
 
-import com.danielfrak.code.keycloak.providers.rest.remote.LegacyUser;
-import com.danielfrak.code.keycloak.providers.rest.remote.LegacyUserService;
-import com.danielfrak.code.keycloak.providers.rest.remote.UserModelFactory;
+import com.vinamilk.dto.LegacyUser;
+import com.vinamilk.providers.LegacyProvider;
+import com.vinamilk.services.LegacyUserService;
+import com.vinamilk.services.UserModelFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,7 +27,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.danielfrak.code.keycloak.providers.rest.ConfigurationProperties.USE_USER_ID_FOR_CREDENTIAL_VERIFICATION;
+import static com.vinamilk.configs.ConfigurationProperties.USE_USER_ID_FOR_CREDENTIAL_VERIFICATION;
 import static java.util.Collections.emptySet;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

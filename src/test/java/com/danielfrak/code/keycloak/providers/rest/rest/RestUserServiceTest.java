@@ -1,12 +1,14 @@
 package com.danielfrak.code.keycloak.providers.rest.rest;
 
-import com.danielfrak.code.keycloak.providers.rest.exceptions.RestUserProviderException;
-import com.danielfrak.code.keycloak.providers.rest.remote.LegacyUser;
-import com.danielfrak.code.keycloak.providers.rest.rest.http.HttpClient;
-import com.danielfrak.code.keycloak.providers.rest.rest.http.HttpResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vinamilk.dto.LegacyUser;
+import com.vinamilk.dto.UserPasswordDto;
+import com.vinamilk.exceptions.RestUserProviderException;
+import com.vinamilk.http.HttpClient;
+import com.vinamilk.http.HttpResponse;
+import com.vinamilk.services.RestUserService;
 import org.apache.http.HttpStatus;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +26,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static com.danielfrak.code.keycloak.providers.rest.ConfigurationProperties.*;
+import static com.vinamilk.configs.ConfigurationProperties.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
